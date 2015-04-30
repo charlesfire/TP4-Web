@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Game On!</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" type="text/css" href="Styles/MasterPageStyle.css"/>
+    <script src = "Scripts/MasterPageScript.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <input id="btnSeConnecter" type="button" value="Se connecter" onclick = "onConnectClick()"/>
+    <div id="pnlConnexion">
+
+      yolo
+      <asp:Button ID="Button1" runat="server" Text="Button" />
+    </div>
+        
+        <asp:ContentPlaceHolder id="Wrapper" runat="server">
+          
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

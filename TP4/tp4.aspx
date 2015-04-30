@@ -1,17 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tp4.aspx.cs" Inherits="tp4" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tp4.aspx.cs" Inherits="tp4" MasterPageFile = "~/MasterPage.master"%>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ContentPlaceHolderId="Wrapper" runat="server">
     <div>
-    
+
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
