@@ -14,13 +14,11 @@ public partial class PageInscription : System.Web.UI.Page
     }
     protected void btnConfirmer_Click(object sender, EventArgs e)
     {
-      ModifierBD("INSERT INTO User (Username, Password, PostCount, Email, Adresse) VALUES ('" + txtBUserName.Text + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');");
+      ModifierBD("INSERT INTO Users (Username, [Password], PostCount, Email, Adresse) VALUES ('" + txtBUserName.Text + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');");
     }
 
     private void ModifierBD(string requeteSQL)
     {
-      string yolo = "INSERT INTO User (Username, Password, PostCount, Email, Adresse) VALUES ('" + txtBUserName.Text + "', '" + txtBPassword.Text + "', " + 0 + ", '" + txtBEmail.Text + "', '" + txtBAdresse.Text + "');";
-      Label2.Text = yolo;
       OleDbConnection maConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath(@"Forum DB/Forum.accdb"));
       OleDbCommand maCommande = new OleDbCommand(requeteSQL, maConnection);
       bool connectionReussie = false;
@@ -29,20 +27,20 @@ public partial class PageInscription : System.Web.UI.Page
         maConnection.Open();
         connectionReussie = true;
       }
-      catch (Exception excep)
+      catch
       {
-        Label1.Text = "Erreur de connection: " + excep.Message;
+        Label1.Text = "Erreur de connection, veuillez réessayer plus tard";
       }
 
       if (connectionReussie)
       {
         try
         {
-          maCommande.ExecuteNonQuery();
+          maCommande.ExecuteReader();
         }
-        catch (Exception excep)
+        catch
         {
-          Label1.Text = "Erreur de requête: " + excep.Message;
+          
         }
         finally
         {
