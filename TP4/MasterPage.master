@@ -13,16 +13,26 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <input id="btnSeConnecter" type="button" value="Se connecter" onclick = "onConnectClick()"/>
-    <div id="pnlConnexion">
-
-      yolo
-      <asp:Button ID="Button1" runat="server" Text="Button" />
-    </div>
-        
-        <asp:ContentPlaceHolder id="Wrapper" runat="server">
+      <div id ="header">
+        <asp:Panel ID="pnlConnexion" runat="server">
+          <input id="btnConnexionr" type="button" value="Connexion" onclick = "onConnectClick()"/>
+          <asp:Button ID="btnInscription" runat="server" Text="Inscription" />
+        </asp:Panel>
+        <asp:Panel ID="pnlConnected" runat="server" Visible="False">
+          <asp:ImageButton ID="imgbtnProfil" runat="server" Visible="True" />
+          <asp:Button ID="btnDeconnexion" runat="server" Text="Déconnexion" Visible="True" />
+        </asp:Panel>
+        <div id="divConnexion">
+          <asp:Label ID="lblPseudo" runat="server" Text="Pseudo"></asp:Label>
+          <asp:TextBox ID="txtbPseudo" runat="server"></asp:TextBox>
+          <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
+          <asp:TextBox ID="txtbPassword" runat="server"></asp:TextBox>
+          <asp:Button ID="btnSeConnecter" runat="server" Text="Se connecter"/>
+        </div>
+      </div>
+      <asp:ContentPlaceHolder id="Wrapper" runat="server">
           
-        </asp:ContentPlaceHolder>
+      </asp:ContentPlaceHolder>
     </form>
 </body>
 </html>
