@@ -16,3 +16,15 @@
 {
   display : none;
 }
+
+#pnlConnexionReussie
+{
+  top : 30px;
+  right : 50px;
+  width : 200px;
+  height : 4em;
+  color : white;
+  background-color : #4A8E15;
+  position : fixed;
+  text-align : center;
+}

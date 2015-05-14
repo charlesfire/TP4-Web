@@ -53,6 +53,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
             user.Avatar = (string)myReader["Avatar"];
             user.Adresse = (string)myReader["Adresse"];
             Session["user"] = user;
+
+            imgbtnProfil.ImageUrl = "Images/" + user.Avatar;
+            pnlConnexionReussie.Visible = true;
           }
         }
         else
@@ -62,23 +65,16 @@ public partial class MasterPage : System.Web.UI.MasterPage
       }
       catch (Exception ex)
       {
-<<<<<<< HEAD
         lblErreurConnexion.Text = "Erreur: " + ex.Message;
-=======
-        lblErreurConnexion.Text = ex.ToString();
->>>>>>> origin/master
       }
       finally
       {
         myConnection.Close();
       }
-<<<<<<< HEAD
     }
 
     protected void btnDeconnexion_Click(object sender, EventArgs e)
     {
       Session["user"] = null;
-=======
->>>>>>> origin/master
     }
 }
