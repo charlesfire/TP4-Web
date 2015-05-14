@@ -28,3 +28,9 @@
   position : fixed;
   text-align : center;
 }
+
+#imgbtnProfil
+{
+  width : 75px;
+  height : 75px;
+}
