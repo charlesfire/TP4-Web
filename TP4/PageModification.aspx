@@ -1,7 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PageModification.aspx.cs" Inherits="PageModification" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tp4.aspx.cs" Inherits="tp4" MasterPageFile = "~/MasterPage.master"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ContentPlaceHolderId="Wrapper" runat="server">
+  
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Wrapper" Runat="Server">
-</asp:Content>
-

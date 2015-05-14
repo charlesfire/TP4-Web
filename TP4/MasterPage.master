@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="Styles/MasterPageStyle.css"/>
     <script src = "Scripts/MasterPageScript.js"></script>
 </head>
-<body>
+<body onload ="onMasterLoad()">
     <form id="form1" runat="server">
       <div id ="header">
         <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
@@ -45,7 +45,7 @@
       <asp:Panel ID="pnlConnexionReussie" runat="server" EnableViewState="False" Visible="False">
         <asp:Label ID="lblConnexionReussie" runat="server" Text="Connexion réussie!"></asp:Label>
         <br />
-        <input id="btnFermerConnexionReussie" type="button" value="Ok" onclick = "onBtnFermerConnexionReussieClick();"/>
+        <input id="btnFermerConnexionReussie" type="button" value="Ok" onclick = "onBtnFermerConnexionReussieClick()"/>
       </asp:Panel>
       <asp:ContentPlaceHolder id="Wrapper" runat="server">
           

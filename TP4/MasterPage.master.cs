@@ -65,7 +65,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
       }
       catch (Exception ex)
       {
-        lblErreurConnexion.Text = "Erreur: " + ex.Message;
+        lblErreurConnexion.Text = ex.Message;
       }
       finally
       {
