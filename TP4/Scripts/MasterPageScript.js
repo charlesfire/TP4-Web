@@ -1,4 +1,4 @@
 ﻿function onConnectClick ()
 {
-  document.getElementById("pnlConnexion").style.display = "block";
+  document.getElementById("divConnexion").style.display = "block";
 }

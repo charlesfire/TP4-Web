@@ -62,16 +62,23 @@ public partial class MasterPage : System.Web.UI.MasterPage
       }
       catch (Exception ex)
       {
+<<<<<<< HEAD
         lblErreurConnexion.Text = "Erreur: " + ex.Message;
+=======
+        lblErreurConnexion.Text = ex.ToString();
+>>>>>>> origin/master
       }
       finally
       {
         myConnection.Close();
       }
+<<<<<<< HEAD
     }
 
     protected void btnDeconnexion_Click(object sender, EventArgs e)
     {
       Session["user"] = null;
+=======
+>>>>>>> origin/master
     }
 }
