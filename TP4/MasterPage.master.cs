@@ -77,4 +77,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
       Session["user"] = null;
     }
+
+    protected void btnInscription_Click(object sender, EventArgs e)
+    {
+      Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
+    }
 }

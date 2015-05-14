@@ -24,7 +24,7 @@
         </asp:Menu>
         <asp:Panel ID="pnlConnexion" runat="server">
           <input id="btnConnexion" type="button" value="Connexion" onclick = "onConnectClick()"/>
-          <asp:Button ID="btnInscription" runat="server" Text="Inscription" PostBackUrl="~/PageInscription.aspx" CausesValidation="False" />
+          <asp:Button ID="btnInscription" runat="server" Text="Inscription" PostBackUrl="~/PageInscription.aspx" CausesValidation="False" OnClick="btnInscription_Click" />
         </asp:Panel>
         <asp:Panel ID="pnlConnected" runat="server" Visible="False">
           <asp:ImageButton ID="imgbtnProfil" runat="server" Visible="True" CausesValidation="False" PostBackUrl="~/PageModification.aspx" />
