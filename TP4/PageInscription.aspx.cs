@@ -52,7 +52,7 @@ public partial class PageInscription : System.Web.UI.Page
           lblAvatar2.Text = "Le fichier ne peut être chargé";
         }
       }
-
+      Server.Transfer("PageConfirmation.aspx");
     }
 
     private void ModifierBD(string requeteSQL)
