@@ -5,7 +5,6 @@
     <div>
     
       <br />
-      <br />
       <asp:Label ID="lblNom" runat="server" Text="Nom d'utilisateur:"></asp:Label>
 &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtBUserName" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
       <asp:TextBox ID="txtBUserName" runat="server" Width="363px" MaxLength="20"></asp:TextBox>
@@ -35,11 +34,17 @@
       <asp:TextBox ID="txtBAdresse" runat="server" Width="346px"></asp:TextBox>
       <br />
       <br />
+      <asp:Label ID="lblAvatar" runat="server" Text="Choisissez votre avatar (optionnel): "></asp:Label>
+      <asp:FileUpload ID="fileUAvatar" runat="server" />
+      <asp:Label ID="lblAvatar2" runat="server"></asp:Label>
+      <br />
+      <br />
+      Choisissez votre signature (optionnel):<br />
+      <br />
+      <asp:TextBox ID="txtBoxSignature" runat="server" Height="90px" Rows="3" TextMode="MultiLine" Width="477px"></asp:TextBox>
+      <br />
+      <br />
       <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" OnClick="btnConfirmer_Click" />
-      <br />
-      <br />
-      <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-      <br />
       <br />
     
     </div>
