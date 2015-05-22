@@ -12,7 +12,7 @@
       <br />
       <br />
       <asp:Label ID="lblPassword" runat="server" Text="Entrez votre mot de passe:" ToolTip=" "></asp:Label>
-&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtBUserName" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtBPassword" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
       <asp:TextBox ID="txtBPassword" runat="server" TextMode="Password" Width="311px" MaxLength="20"></asp:TextBox>
       <asp:RegularExpressionValidator ID="RegExValLblPassword" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="^[\s\S]{8,20}$">Votre mot de passe doit avoir au moins 8 caractères</asp:RegularExpressionValidator>
       <br />
