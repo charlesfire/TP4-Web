@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tp4.aspx.cs" Inherits="tp4" MasterPageFile = "~/MasterPage.master"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PageModification.aspx.cs" Inherits="PageModification" %>
 
 <asp:Content ContentPlaceHolderId="Wrapper" runat="server">
   
@@ -37,3 +37,5 @@
   <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" OnClick="btnConfirmer_Click" />
   
 </asp:Content>
+
+

@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OleDb;
 
-public partial class PageInscription : System.Web.UI.Page
+public partial class PageModification : System.Web.UI.Page
 {
   protected void Page_Load(object sender, EventArgs e)
   {
@@ -14,7 +14,7 @@ public partial class PageInscription : System.Web.UI.Page
   }
   protected void btnConfirmer_Click(object sender, EventArgs e)
   {
-    
+
     ModifierBD("INSERT INTO Users (Username, [Password], PostCount, Email, Adresse) VALUES ('" + txtBUserName.Text + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');");
     int MaxWidth = 200;
     int MaxHeight = 200;

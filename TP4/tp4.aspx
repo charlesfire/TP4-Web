@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tp4.aspx.cs" Inherits="tp4" MasterPageFile = "~/MasterPage.master"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="tp4.aspx.cs" Inherits="tp4" %>
 
 <asp:Content ContentPlaceHolderId="Wrapper" runat="server">
     <div>
@@ -28,3 +28,4 @@
       <asp:Button ID="btnSoumettre" runat="server" OnClick="btnSoumettre_Click" Text="Soumettre" />
     </div>
 </asp:Content>
+
