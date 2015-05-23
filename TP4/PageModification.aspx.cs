@@ -47,6 +47,7 @@ public partial class PageModification : System.Web.UI.Page
               fileUAvatar.SaveAs(path);
               Session["imageURL"] = "~/Images/" + filename;
               ModifierBD("UPDATE users SET Avatar = '" + filename + "' WHERE Username = '" + user.Name + "';");
+
             }
             else
             {
@@ -58,13 +59,12 @@ public partial class PageModification : System.Web.UI.Page
             lblAvatar2.Text = "Seules les fichiers d'image sont acceptés.";
           }
         }
-        catch (Exception ex)
+        catch
         {
-          lblAvatar2.Text = "Le fichier ne peut être chargé" +ex.Message;
+          lblAvatar2.Text = "Le fichier ne peut être chargé";
         }
       }
     }
-    Server.Transfer("PageModificationConfirm.aspx");
   }
 
   private void ModifierBD(string requeteSQL)
