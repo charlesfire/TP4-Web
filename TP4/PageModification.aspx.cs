@@ -17,12 +17,19 @@ public partial class PageModification : System.Web.UI.Page
     User user = (User)Session["user"];
     if (user != null)
     {
-      ModifierBD("INSERT INTO Users (Username, [Password], PostCount, Email, Adresse) VALUES ('" + user.Name + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');");
+      if (txtBPassword.Text != "")
+        ModifierBD("UPDATE users SET Password = '" + txtBPassword.Text + "WHERE Username = '" + user.Name + "'");
       int MaxWidth = 200;
       int MaxHeight = 200;
+      if (txtBSignature.Text != "")
+        ModifierBD("UPDATE users SET Signature = '" + txtBSignature.Text + "' WHERE Username = '" + user.Name + "';");
+      if (txtBAdresse.Text != "")
+        ModifierBD("UPDATE users SET Adresse = '" + txtBAdresse.Text + "' WHERE Username = '" + user.Name + "';");
+      if (txtBEmail.Text != "")
+        ModifierBD("UPDATE users SET Email = '" + txtBEmail.Text + "' WHERE Username = '" + user.Name + "';");
+      if (!fileUAvatar.HasFile)
       ModifierBD("UPDATE users SET Avatar = 'default.png' WHERE Username = '" + user.Name + "';");
-      ModifierBD("UPDATE users SET Signature = '" + txtBSignature.Text + "' WHERE Username = '" + user.Name + "';");
-      if (fileUAvatar.HasFile)
+      else
       {
         try
         {
