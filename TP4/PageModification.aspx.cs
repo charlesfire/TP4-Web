@@ -39,10 +39,11 @@ public partial class PageModification : System.Web.UI.Page
           {
             if (TesterTailleImage(MaxWidth, MaxHeight))
             {
+              System.IO.File.Delete(Server.MapPath("~/Images/") + user.Avatar);
               string filename = fileUAvatar.FileName;
               string[] getExtension = fileUAvatar.FileName.Split('.');
               filename = user.Name + "." + getExtension[getExtension.Length - 1];
-              string path = Server.MapPath("~\\Images\\") + filename;
+              string path = Server.MapPath("~/Images/") + filename;
               fileUAvatar.SaveAs(path);
               Session["imageURL"] = "~/Images/" + filename;
               ModifierBD("UPDATE users SET Avatar = '" + filename + "' WHERE Username = '" + user.Name + "';");
@@ -57,9 +58,9 @@ public partial class PageModification : System.Web.UI.Page
             lblAvatar2.Text = "Seules les fichiers d'image sont acceptés.";
           }
         }
-        catch 
+        catch (Exception ex)
         {
-          lblAvatar2.Text = "Le fichier ne peut être chargé";
+          lblAvatar2.Text = "Le fichier ne peut être chargé" +ex.Message;
         }
       }
     }
@@ -101,10 +102,6 @@ public partial class PageModification : System.Web.UI.Page
   public bool TesterTailleImage(int MaxWidth, int MaxHeight)
   {
     System.Drawing.Image myImage;
-
-    //Si le fichier n'est pas une image, on retourne faux, peu importe ce qui arrive.  
-    //Il faut le faire même si on vérifie le type mime du fichier avant.  Un type mime, ça peut se hacker.
-    //La sécurité informqatique, c'est ne jamais prendre de chances.
     try
     {
       myImage = System.Drawing.Image.FromStream(fileUAvatar.PostedFile.InputStream);
