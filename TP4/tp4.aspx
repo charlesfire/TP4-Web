@@ -12,14 +12,21 @@
       Contactez-nous!<br />
       <br />
       <asp:Label ID="lblSujet" runat="server" Text="Sujet:"></asp:Label>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtBSujet" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
       <asp:TextBox ID="txtBSujet" runat="server" MaxLength="50" Width="447px"></asp:TextBox>
       <br />
+      <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtBSujet" ErrorMessage="Votre sujet doit être d'au moins 5 caractères." ForeColor="Red" ValidationExpression="^[\s\S]{5,}$"></asp:RegularExpressionValidator>
       <br />
       <asp:Label ID="lblVotreAdresse" runat="server" Text="Votre Adresse Email:"></asp:Label>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtBEmail" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
       <asp:TextBox ID="txtBEmail" runat="server" Width="355px"></asp:TextBox>
       <br />
+      <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBEmail" ErrorMessage="Votre adresse email n'est pas valide." ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
       <br />
       <asp:Label ID="lblContenu" runat="server" Text="Contenu:"></asp:Label>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtBContenu" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+      <br />
+      <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtBContenu" ErrorMessage="Votre contenu doit être d'au moins 10 caractères." ForeColor="Red" ValidationExpression="^[\s\S]{10,}$"></asp:RegularExpressionValidator>
       <br />
       <asp:TextBox ID="txtBContenu" runat="server" Height="218px" Rows="10" TextMode="MultiLine" Width="483px"></asp:TextBox>
       <br />

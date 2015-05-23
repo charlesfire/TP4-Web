@@ -29,17 +29,16 @@ public partial class tp4 : System.Web.UI.Page
       client.Credentials = new System.Net.NetworkCredential("joj@joj.joj", "xxxxxxxx");
       client.Send(couriel);
     }
-    catch (Exception ex)
+    catch 
     {
-      //Traitement des erreurs
-      lblErreur.Text = "Erreur lors de l'envoi du courriel: " + ex.Message;
+      lblErreur.Text = "Erreur lors de l'envoi du courriel, veuillez réessayer.";
     }
     finally
     {
       //Une fois le message envoyé, on vide le formulaire d'envoi du mail.
-      lblContenu.Text = "";
-      lblErreur.Text = "";
-      lblSujet.Text = "";
+      txtBContenu.Text = "";
+      txtBEmail.Text = "";
+      txtBSujet.Text = "";
     }
   }
 }
