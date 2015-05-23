@@ -14,43 +14,46 @@ public partial class PageModification : System.Web.UI.Page
   }
   protected void btnConfirmer_Click(object sender, EventArgs e)
   {
-
-    ModifierBD("INSERT INTO Users (Username, [Password], PostCount, Email, Adresse) VALUES ('" + txtBUserName.Text + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');");
-    int MaxWidth = 200;
-    int MaxHeight = 200;
-    ModifierBD("UPDATE users SET Avatar = 'default.png' WHERE Username = '" + txtBUserName.Text + "';");
-    ModifierBD("UPDATE users SET Signature = '" + txtBoxSignature.Text + "' WHERE Username = '" + txtBUserName.Text + "';");
-    if (fileUAvatar.HasFile)
+    User user = (User)Session["user"];
+    if (user != null)
     {
-      try
+      ModifierBD("INSERT INTO Users (Username, [Password], PostCount, Email, Adresse) VALUES ('" + user.Name + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');");
+      int MaxWidth = 200;
+      int MaxHeight = 200;
+      ModifierBD("UPDATE users SET Avatar = 'default.png' WHERE Username = '" + user.Name + "';");
+      ModifierBD("UPDATE users SET Signature = '" + txtBSignature.Text + "' WHERE Username = '" + user.Name + "';");
+      if (fileUAvatar.HasFile)
       {
-        string type = fileUAvatar.PostedFile.ContentType.Substring(0, 5);
-
-        if (type == "image")
+        try
         {
-          if (TesterTailleImage(MaxWidth, MaxHeight))
+          string type = fileUAvatar.PostedFile.ContentType.Substring(0, 5);
+
+          if (type == "image")
           {
-            string filename = fileUAvatar.FileName;
-            string[] getExtension = fileUAvatar.FileName.Split('.');
-            filename = txtBUserName.Text + "." + getExtension[getExtension.Length - 1];
-            string path = Server.MapPath("~\\Images\\") + filename;
-            fileUAvatar.SaveAs(path);
-            Session["imageURL"] = "~/Images/" + filename;
-            ModifierBD("UPDATE users SET Avatar = '" + filename + "' WHERE Username = '" + txtBUserName.Text + "';");
+            if (TesterTailleImage(MaxWidth, MaxHeight))
+            {
+              string filename = fileUAvatar.FileName;
+              string[] getExtension = fileUAvatar.FileName.Split('.');
+              filename = user.Name + "." + getExtension[getExtension.Length - 1];
+              string path = Server.MapPath("~\\Images\\") + filename;
+              fileUAvatar.SaveAs(path);
+              Session["imageURL"] = "~/Images/" + filename;
+              ModifierBD("UPDATE users SET Avatar = '" + filename + "' WHERE Username = '" + user.Name + "';");
+            }
+            else
+            {
+              lblAvatar2.Text = string.Format("Attention: l'image doit faire au maximum {0} pixels de largeur pour {1} pixels de hauteur.", MaxWidth, MaxHeight);
+            }
           }
           else
           {
-            lblAvatar2.Text = string.Format("Attention: l'image doit faire au maximum {0} pixels de largeur pour {1} pixels de hauteur.", MaxWidth, MaxHeight);
+            lblAvatar2.Text = "Seules les fichiers d'image sont acceptés.";
           }
         }
-        else
+        catch (Exception ex)
         {
-          lblAvatar2.Text = "Seules les fichiers d'image sont acceptés.";
+          lblAvatar2.Text = "Le fichier ne peut être chargé";
         }
-      }
-      catch (Exception ex)
-      {
-        lblAvatar2.Text = "Le fichier ne peut être chargé";
       }
     }
     Server.Transfer("PageConfirmation.aspx");
