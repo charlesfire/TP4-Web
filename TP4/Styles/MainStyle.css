@@ -1,7 +1,13 @@
-﻿.btn
+﻿input[type=button], input[type=submit]
 {
   background-color : #002cff;
   height : 2em;
   border : none;
   color : white;
+}
+
+input[type=button]:hover, input[type=submit]:hover
+{
+  background-color : #0044ff;
+  cursor : pointer;
 }

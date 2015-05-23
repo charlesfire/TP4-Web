@@ -1,0 +1,12 @@
+﻿table#tblInformations
+{
+	text-align : left;
+	width : 500px;
+	margin-left : auto;
+	margin-right : auto;
+}
+
+.alignRight
+{
+	text-align : right;
+}

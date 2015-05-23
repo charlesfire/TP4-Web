@@ -8,60 +8,62 @@ using System.Web;
 /// </summary>
 public class User
 {
-	public string Name
-	{
-		get;
-		set;
-	}
+  private List<Inscription> inscriptions = null;
 
-	public string Password
-	{
-		get;
-		set;
-	}
+  public string Name
+  {
+    get;
+    set;
+  }
 
-	private int postCount = 0;
-	public int PostCount
-	{
-		get
-		{
-			return postCount;
-		}
+  public string Password
+  {
+    get;
+    set;
+  }
 
-		set
-		{
-			if (value < 0)
-				throw new ArgumentException("Post count can't be lesser than 0.");
-			postCount = value;
-		}
-	}
+  private int postCount = 0;
+  public int PostCount
+  {
+    get
+    {
+      return postCount;
+    }
 
-	public bool IsAdmin
-	{
-		get;
-		set;
-	}
+    set
+    {
+      if (value < 0)
+        throw new ArgumentException("Post count can't be lesser than 0.");
+      postCount = value;
+    }
+  }
 
-	public string Email
-	{
-		get;
-		set;
-	}
+  public bool IsAdmin
+  {
+    get;
+    set;
+  }
 
-	public string Avatar
-	{
-		get;
-		set;
-	}
+  public string Email
+  {
+    get;
+    set;
+  }
 
-	public string Adresse
-	{
-		get;
-		set;
-	}
+  public string Avatar
+  {
+    get;
+    set;
+  }
 
-	public User()
-	{
+  public string Adresse
+  {
+    get;
+    set;
+  }
 
-	}
+  public User()
+  {
+    inscriptions = new List<Inscription>();
+  }
 }
