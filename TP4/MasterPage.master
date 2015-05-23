@@ -9,6 +9,7 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" type="text/css" href="Styles/MasterPageStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="Styles/MainStyle.css"/>
     <script src = "Scripts/MasterPageScript.js"></script>
 </head>
 <body onload ="onMasterLoad()">
@@ -22,9 +23,9 @@
             <asp:MenuItem Text="Nous joindre" Value="Nous joindre"></asp:MenuItem>
           </Items>
         </asp:Menu>
-        <asp:Panel ID="pnlConnexion" runat="server">
-          <input id="btnConnexion" type="button" value="Connexion" onclick = "onConnectClick()"/>
-          <asp:Button ID="btnInscription" runat="server" Text="Inscription" PostBackUrl="~/PageInscription.aspx" CausesValidation="False" OnClick="btnInscription_Click" />
+        <asp:Panel ID="pnlConnexion" runat="server" ClientIDMode="Static">
+          <input id="btnConnexion" type="button" value="Connexion" onclick = "onConnectClick()" class="btn"/>
+          <asp:Button ID="btnInscription" runat="server" Text="Inscription" PostBackUrl="~/PageInscription.aspx" CausesValidation="False" OnClick="btnInscription_Click" CssClass="btn" />
         </asp:Panel>
         <asp:Panel ID="pnlConnected" runat="server" Visible="False">
           <asp:ImageButton ID="imgbtnProfil" runat="server" Visible="True" CausesValidation="False" PostBackUrl="~/PageModification.aspx" />
@@ -47,9 +48,11 @@
         <br />
         <input id="btnFermerConnexionReussie" type="button" value="Ok" onclick = "onBtnFermerConnexionReussieClick()"/>
       </asp:Panel>
-      <asp:ContentPlaceHolder id="Wrapper" runat="server">
+      <div id = "wrapper">
+        <asp:ContentPlaceHolder runat="server" ClientIDMode="Static" ID="Wrapper">
           
-      </asp:ContentPlaceHolder>
+        </asp:ContentPlaceHolder>
+      </div>
     </form>
 </body>
 </html>
