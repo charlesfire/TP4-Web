@@ -116,4 +116,11 @@ public partial class PageModification : System.Web.UI.Page
 
     return (myImage.Width <= MaxWidth && myImage.Height <= MaxHeight);
   }
+  protected void btnAnnuler_Click(object sender, EventArgs e)
+  {
+    if (Session["LastPage"] != null)
+      Response.Redirect((string)Session["LastPage"]);
+    else
+      Response.Redirect("tp4.aspx");
+  }
 }
