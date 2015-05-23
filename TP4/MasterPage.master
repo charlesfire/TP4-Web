@@ -17,8 +17,8 @@
       <div id ="header">
         <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
           <Items>
-            <asp:MenuItem Text="Acceuil" Value="Acceuil"></asp:MenuItem>
-            <asp:MenuItem Text="Évènement" Value="Évènement"></asp:MenuItem>
+            <asp:MenuItem Text="Acceuil" Value="Acceuil" NavigateUrl="~/tp4.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Évènement" Value="Évènement" NavigateUrl="~/PageÉvènement.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Forum" Value="Forum"></asp:MenuItem>
             <asp:MenuItem Text="Nous joindre" Value="Nous joindre"></asp:MenuItem>
           </Items>
