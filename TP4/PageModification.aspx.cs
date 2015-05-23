@@ -57,13 +57,13 @@ public partial class PageModification : System.Web.UI.Page
             lblAvatar2.Text = "Seules les fichiers d'image sont acceptés.";
           }
         }
-        catch (Exception ex)
+        catch 
         {
           lblAvatar2.Text = "Le fichier ne peut être chargé";
         }
       }
     }
-    Server.Transfer("PageConfirmation.aspx");
+    Server.Transfer("PageModificationConfirm.aspx");
   }
 
   private void ModifierBD(string requeteSQL)
@@ -122,5 +122,19 @@ public partial class PageModification : System.Web.UI.Page
       Response.Redirect((string)Session["LastPage"]);
     else
       Response.Redirect("tp4.aspx");
+  }
+  protected void PreRender(object sender, EventArgs e)
+  {
+    User user = (User)Session["user"];
+    //On ne peut pas tester à partir de la page modification elle même. Il faut se connecter au site avant.
+    string password = user.Password;
+    string hiddenPassword = "";
+    for (int i = 0; i != password.Length; i++)
+    {
+      hiddenPassword+="*";
+    }
+    lblCurrentPassword.Text = hiddenPassword;
+    lblCurrentAdress.Text = user.Adresse;
+    lblCurrentEmail.Text = user.Email;
   }
 }

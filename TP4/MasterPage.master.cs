@@ -82,4 +82,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
       Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
     }
+    protected void btnModifier_Click(object sender, EventArgs e)
+    {
+      Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
+      Server.Transfer("PageModification.aspx");
+    }
 }

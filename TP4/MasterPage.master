@@ -26,10 +26,11 @@
         <asp:Panel ID="pnlConnexion" runat="server" ClientIDMode="Static">
           <input id="btnConnexion" type="button" value="Connexion" onclick = "onConnectClick()" class="btn"/>
           <asp:Button ID="btnInscription" runat="server" Text="Inscription" PostBackUrl="~/PageInscription.aspx" CausesValidation="False" OnClick="btnInscription_Click" CssClass="btn" />
-        </asp:Panel>
+          &nbsp;</asp:Panel>
         <asp:Panel ID="pnlConnected" runat="server" Visible="False">
           <asp:ImageButton ID="imgbtnProfil" runat="server" Visible="True" CausesValidation="False" PostBackUrl="~/PageModification.aspx" />
-          <asp:Button ID="btnDeconnexion" runat="server" Text="Déconnexion" Visible="True" CausesValidation="False" OnClick="btnDeconnexion_Click" />
+          <asp:Button ID="btnModifier" runat="server" CausesValidation="False" CssClass="btn" OnClick="btnModifier_Click" Text="Modifier" />
+          &nbsp;<asp:Button ID="btnDeconnexion" runat="server" Text="Déconnexion" Visible="True" CausesValidation="False" OnClick="btnDeconnexion_Click" CssClass="btn" />
         </asp:Panel>
         <div id="divConnexion">
           <asp:Label ID="lblPseudo" runat="server" Text="Pseudo"></asp:Label>
