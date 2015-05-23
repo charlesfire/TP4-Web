@@ -11,10 +11,23 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
       lblErreurConnexion.Text = "";
-      Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
     }
 
     protected void Page_PreRender()
+    {
+      if (Session["user"] != null)
+      {
+        pnlConnected.Visible = true;
+        pnlConnexion.Visible = false;
+      }
+      else
+      {
+        pnlConnected.Visible = false;
+        pnlConnexion.Visible = true;
+      }
+    }
+
+    protected void btnSeConnecter_Click(object sender, EventArgs e)
     {
       OleDbConnection myConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath(@"Forum DB/Forum.accdb"));
       OleDbCommand userConnectCommand = new OleDbCommand("SELECT [Password], IsBanned, PostCount, IsAdmin, Email, Avatar, Adresse FROM Users, Inscriptions WHERE Username = '" + txtbPseudo.Text + "';", myConnection);
@@ -76,8 +89,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
       Session["user"] = null;
     }
 
+    protected void btnInscription_Click(object sender, EventArgs e)
+    {
+      Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
+    }
     protected void btnModifier_Click(object sender, EventArgs e)
     {
+      Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
       Server.Transfer("PageModification.aspx");
     }
 }
