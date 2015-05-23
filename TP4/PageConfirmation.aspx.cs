@@ -13,9 +13,16 @@ public partial class PageConfirmation : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+      
       if (Session["LastPage"] != null)
+      {
         Response.Redirect((string)Session["LastPage"]);
+      }
       else
         Response.Redirect("tp4.aspx");
+    }
+    protected void PreRender(object sender, EventArgs e)
+    {
+      lblConfirmation.Text = (string)Session["texteConfirmation"];
     }
 }

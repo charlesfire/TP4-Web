@@ -53,6 +53,7 @@ public partial class PageInscription : System.Web.UI.Page
           lblAvatar2.Text = "Le fichier ne peut être chargé";
         }
       }
+      Session["texteConfirmation"] = "Votre inscription a été effectué avec succès!";
       Server.Transfer("PageConfirmation.aspx");
     }
 
