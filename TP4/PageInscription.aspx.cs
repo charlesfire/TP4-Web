@@ -48,7 +48,7 @@ public partial class PageInscription : System.Web.UI.Page
             lblAvatar2.Text = "Seules les fichiers d'image sont acceptés.";
           }
         }
-        catch (Exception ex)
+        catch
         {
           lblAvatar2.Text = "Le fichier ne peut être chargé";
         }
