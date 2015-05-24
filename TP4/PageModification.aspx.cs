@@ -49,7 +49,6 @@ public partial class PageModification : System.Web.UI.Page
               filename = user.Name + "." + getExtension[getExtension.Length - 1];
               string path = Server.MapPath("~/Images/") + filename;
               fileUAvatar.SaveAs(path);
-              Session["imageURL"] = "~/Images/" + filename;
               ModifierBD("UPDATE users SET Avatar = '" + filename + "' WHERE Username = '" + user.Name + "';");
               Session["texteConfirmation"] = "Votre modification a été effectuée avec succès.";
               Server.Transfer("PageConfirmation.aspx");

@@ -19,10 +19,10 @@ public partial class PageÉvènement : System.Web.UI.Page
   /// <param name="e"></param>
   protected void Page_LoadComplete(object sender, EventArgs e)
   {
-    User user = (User)Session["user"];
+    user = (User)Session["user"];
     if (user == null)
     {
-      Response.Redirect("tp4.aspx");
+      Response.Redirect("tp4.aspx", false);
     }
 
     // Si le conteneur associatif des planchers/jeux est vide...
@@ -182,7 +182,7 @@ public partial class PageÉvènement : System.Web.UI.Page
   protected void btnAnnuler_Click(object sender, EventArgs e)
   {
     // On recharge la page pour effacer tout le reste
-    Response.Redirect((string)Session["lastPage"]);
+    Response.Redirect((string)Session["lastPage"], false);
   }
 
   /// <summary>
@@ -204,7 +204,7 @@ public partial class PageÉvènement : System.Web.UI.Page
       //ToDo : save in database
 
       // On charge la page de résumé
-      Response.Redirect("Resume.aspx");
+      Response.Redirect("Resume.aspx", false);
     }
   }
 
