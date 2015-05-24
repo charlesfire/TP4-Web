@@ -15,7 +15,7 @@
 <body onload ="onMasterLoad()">
     <form id="form1" runat="server">
       <div id ="header">
-        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" OnMenuItemClick="Menu1_MenuItemClick">
           <Items>
             <asp:MenuItem Text="Acceuil" Value="Acceuil"></asp:MenuItem>
             <asp:MenuItem Text="Évènement" Value="Évènement"></asp:MenuItem>

@@ -32,6 +32,7 @@ public partial class PageSujets : System.Web.UI.Page
       {
         try
         {
+          LtlSujets.Text = "";
           OleDbDataReader monDataReader = commande.ExecuteReader();
           int nbrChamps = monDataReader.FieldCount;
           while (monDataReader.Read())
@@ -58,5 +59,15 @@ public partial class PageSujets : System.Web.UI.Page
     protected void PreRender(object sender, EventArgs e)
     {
       ConstruireLiteralSujets("SELECT Title, StartedBy, DatePosted, NbPosts, LastPoster, LastPostTime FROM Topics ORDER BY LastPostTime DESC;");
+      User user = (User)Session["user"];
+      if (user != null)
+      {
+        btnTopCreerSujet.Visible = true;
+        btnBottomCreerSujet.Visible = true;
+      }
+    }
+    protected void btnCreerSujet_Click(object sender, EventArgs e)
+    {
+      Server.Transfer("PageCréation.aspx");
     }
 }

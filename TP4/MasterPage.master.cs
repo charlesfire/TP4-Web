@@ -98,4 +98,23 @@ public partial class MasterPage : System.Web.UI.MasterPage
       Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
       Server.Transfer("PageModification.aspx");
     }
+    protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
+    {
+      if (e.Item.Value == "Accueil")
+      {
+        Response.Redirect("tp4.aspx");
+      }
+      else if (e.Item.Value == "Évènement")
+      {
+        Response.Redirect("PageInscription.aspx");
+      }
+      else if (e.Item.Value == "Forum")
+      {
+        Response.Redirect("PageSujets.aspx");
+      }
+      else if (e.Item.Value == "Nous Joindre")
+      {
+        Response.Redirect("tp4.aspx");
+      }
+    }
 }
