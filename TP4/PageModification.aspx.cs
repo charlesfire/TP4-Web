@@ -8,10 +8,14 @@ using System.Data.OleDb;
 
 public partial class PageModification : System.Web.UI.Page
 {
-  protected void Page_Load(object sender, EventArgs e)
+  protected void Page_LoadComplete(object sender, EventArgs e)
   {
-
+    if ((User)Session["user"] == null)
+    {
+      Response.Redirect("tp4.aspx");
+    }
   }
+
   protected void btnConfirmer_Click(object sender, EventArgs e)
   {
     User user = (User)Session["user"];
@@ -114,6 +118,7 @@ public partial class PageModification : System.Web.UI.Page
 
     return (myImage.Width <= MaxWidth && myImage.Height <= MaxHeight);
   }
+
   protected void btnAnnuler_Click(object sender, EventArgs e)
   {
     if (Session["LastPage"] != null)
@@ -121,18 +126,23 @@ public partial class PageModification : System.Web.UI.Page
     else
       Response.Redirect("tp4.aspx");
   }
+
   protected void PreRender(object sender, EventArgs e)
   {
     User user = (User)Session["user"];
+
     //On ne peut pas tester à partir de la page modification elle même. Il faut se connecter au site avant.
-    string password = user.Password;
-    string hiddenPassword = "";
-    for (int i = 0; i != password.Length; i++)
+    if (user != null)
     {
-      hiddenPassword+="*";
+      string password = user.Password;
+      string hiddenPassword = "";
+      for (int i = 0; i != password.Length; i++)
+      {
+        hiddenPassword+="*";
+      }
+      lblCurrentPassword.Text = hiddenPassword;
+      lblCurrentAdress.Text = user.Adresse;
+      lblCurrentEmail.Text = user.Email;
     }
-    lblCurrentPassword.Text = hiddenPassword;
-    lblCurrentAdress.Text = user.Adresse;
-    lblCurrentEmail.Text = user.Email;
   }
 }

@@ -15,12 +15,12 @@
 <body onload ="onMasterLoad()">
     <form id="form1" runat="server">
       <div id ="header">
-        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" OnMenuItemClick="Menu1_MenuItemClick">
+        <asp:Menu ID="menNavigation" runat="server" Orientation="Horizontal">
           <Items>
-            <asp:MenuItem Text="Acceuil" Value="Acceuil"></asp:MenuItem>
-            <asp:MenuItem Text="Évènement" Value="Évènement"></asp:MenuItem>
-            <asp:MenuItem Text="Forum" Value="Forum"></asp:MenuItem>
-            <asp:MenuItem Text="Nous joindre" Value="Nous joindre"></asp:MenuItem>
+            <asp:MenuItem Text="Acceuil" Value="Acceuil" NavigateUrl="~/tp4.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Évènement" Value="Évènement" NavigateUrl="~/PageÉvènement.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Forum" Value="Forum" NavigateUrl="~/PageSujets.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Nous joindre" Value="Nous joindre" NavigateUrl="~/MasterPage.master"></asp:MenuItem>
           </Items>
         </asp:Menu>
         <asp:Panel ID="pnlConnexion" runat="server" ClientIDMode="Static">
@@ -45,9 +45,7 @@
         </div>
       </div>
       <asp:Panel ID="pnlConnexionReussie" runat="server" EnableViewState="False" Visible="False">
-        <asp:Label ID="lblConnexionReussie" runat="server" Text="Connexion réussie!"></asp:Label>
-        <br />
-        <input id="btnFermerConnexionReussie" type="button" value="Ok" onclick = "onBtnFermerConnexionReussieClick()"/>
+        <asp:Label ID="lblConnexionReussie" runat="server" Text="Connexion réussie!" ClientIDMode="Static"></asp:Label>
       </asp:Panel>
       <div id = "wrapper">
         <asp:ContentPlaceHolder runat="server" ClientIDMode="Static" ID="Wrapper">
