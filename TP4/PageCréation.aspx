@@ -23,7 +23,7 @@
       <asp:TextBox ID="txtbContenu" runat="server" Height="300px" TextMode="MultiLine" Width="650px"></asp:TextBox>
     </p>
     <p style="margin-left: 40px">
-      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Button ID="btnSoumettre" runat="server" Text="Soumettre" />
+      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Button ID="btnSoumettre" runat="server" Text="Soumettre" OnClick="btnSoumettre_Click" />
       &nbsp;<asp:Button ID="btnAnnuler" runat="server" Text="Annuler" CausesValidation="False" OnClick="btnAnnuler_Click" />
     </p>
   </asp:Panel>
