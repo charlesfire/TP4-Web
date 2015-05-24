@@ -11,4 +11,17 @@ public partial class PageCréation : System.Web.UI.Page
     {
 
     }
+    protected void PreRendre(object sender, EventArgs e)
+    {
+      User user = (User)Session["user"];
+      if (user == null)
+      {
+        pnlCreation.Visible = false;
+        pnlNestPasConnecte.Visible = true;
+      }
+    }
+    protected void btnAnnuler_Click(object sender, EventArgs e)
+    {
+      Response.Redirect((string)Session["LastPage"]);
+    }
 }

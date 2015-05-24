@@ -7,7 +7,8 @@
     Forum</p>
     <asp:Button ID="btnTopCreerSujet" runat="server" Text="Créer un nouveau sujet" OnClick="btnCreerSujet_Click" Visible="False" />
     <br />
-    <asp:Literal ID="LtlSujets" runat="server" OnPreRender="PreRender"></asp:Literal>
+    <asp:Literal ID="LtlSujets" runat="server" OnPreRender="PreRender" OnUnload="Unload"></asp:Literal>
+  &nbsp;&nbsp;&nbsp;
   <br />
     <asp:Button ID="btnBottomCreerSujet" runat="server" Text="Créer un nouveau sujet" OnClick="btnCreerSujet_Click" Visible="False" />
   <br />

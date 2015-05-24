@@ -67,6 +67,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
             imgbtnProfil.ImageUrl = "Images/" + user.Avatar;
             pnlConnexionReussie.Visible = true;
+            
           }
         }
         else
@@ -81,12 +82,18 @@ public partial class MasterPage : System.Web.UI.MasterPage
       finally
       {
         myConnection.Close();
+        User userConnectedTest = (User)Session["user"];
+        if (userConnectedTest != null)
+        {
+          Response.Redirect(HttpContext.Current.Request.Url.AbsolutePath);
+        }
       }
     }
 
     protected void btnDeconnexion_Click(object sender, EventArgs e)
     {
       Session["user"] = null;
+      Response.Redirect(HttpContext.Current.Request.Url.AbsolutePath);
     }
 
     protected void btnInscription_Click(object sender, EventArgs e)

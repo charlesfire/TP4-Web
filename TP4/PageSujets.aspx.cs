@@ -70,4 +70,8 @@ public partial class PageSujets : System.Web.UI.Page
     {
       Server.Transfer("PageCréation.aspx");
     }
+    protected void Unload(object sender, EventArgs e)
+    {
+      Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
+    }
 }
