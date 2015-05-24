@@ -42,10 +42,15 @@ public class Sujet
     get;
     set;
   }
-
-  public string BuildLitteral(int nbSujet)
+  public int PostNumber
   {
-    string litteral = "  <div id=\"pnlSujet\" style=\"border-style:Solid;\"><a id=\""+Title+"\" href=\"PageDiscussion.aspx\">"+Title+"</a>&nbsp;"+CreationDate+" Créé par: "+Username+"<br /> &nbsp;Nb repliques: "+NbPosts+" Derniere modification: LastPost Par: "+LastPoster+"</div>";
+    get;
+    set;
+  }
+
+  public string BuildLitteral()
+  {
+    string litteral = "  <div id=\"pnlSujet\" style=\"border-style:Solid;\"><a id=\""+Title+"\" href=\"PageDiscussion.aspx\">"+Title+"</a>&nbsp;"+CreationDate+" Créé par: "+Username+"<br /> &nbsp;Nb repliques: "+NbPosts+" Derniere modification:"+LastPost+" Par: "+LastPoster+"</div>";
     return litteral;
   }
 }

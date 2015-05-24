@@ -8,14 +8,15 @@ using System.Data.OleDb;
 
 public partial class PageSujets : System.Web.UI.Page
 {
+  Sujet sujet = new Sujet();
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
 
-    public void SelectionBD(string requeteRecue)
+    public void ConstruireLiteralSujets(string requeteRecue)
     {
-      OleDbConnection connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath(@"StockHockey.accdb"));
+      OleDbConnection connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath(@"Forum DB/Forum.accdb"));
       OleDbCommand commande = new OleDbCommand(requeteRecue, connection);
       bool connectionReussie = false;
       try
@@ -23,7 +24,7 @@ public partial class PageSujets : System.Web.UI.Page
         connection.Open();
         connectionReussie = true;
       }
-      catch 
+      catch
       {
 
       }
@@ -35,12 +36,18 @@ public partial class PageSujets : System.Web.UI.Page
           int nbrChamps = monDataReader.FieldCount;
           while (monDataReader.Read())
           {
-
+            sujet.Title = monDataReader[0].ToString();
+            sujet.Username = monDataReader[1].ToString();
+            sujet.CreationDate = (DateTime)monDataReader[2];
+            sujet.NbPosts = (short)monDataReader[3];
+            sujet.LastPoster = monDataReader[4].ToString();
+            sujet.LastPost = (DateTime)monDataReader[5];
+            LtlSujets.Text += sujet.BuildLitteral();
           }
         }
-        catch 
+        catch(Exception ex)
         {
-
+          throw ex;
         }
         finally
         {
@@ -50,16 +57,6 @@ public partial class PageSujets : System.Web.UI.Page
     }
     protected void PreRender(object sender, EventArgs e)
     {
-      //NOTE: Les lignes suivantes sont des tests et peuvent être supprimés. À la place, on pourrait faire un for qui cycle au travers de tout les éléments du tableau post dans la base de donnée (trié en ordre décroissant de date de derniere modification).
-      Sujet sujet = new Sujet();
-      sujet.LastPost = DateTime.Now;
-      sujet.LastPoster = "Jojmaster";
-      sujet.NbPosts = 0;
-      sujet.Title = "Déclaration";
-      sujet.CreationDate = DateTime.Now;
-      sujet.Username = "Jojmaster";
-      LtlSujets.Text += sujet.BuildLitteral(1);
-      LtlSujets.Text += sujet.BuildLitteral(2);
-      LtlSujets.Text += sujet.BuildLitteral(3);
+      ConstruireLiteralSujets("SELECT Title, StartedBy, DatePosted, NbPosts, LastPoster, LastPostTime FROM Topics ORDER BY LastPostTime DESC;");
     }
 }
