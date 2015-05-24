@@ -5,8 +5,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Wrapper" Runat="Server">
   <p>
     Forum</p>
-  <p>
-    <asp:Literal ID="litToutSujets" runat="server"></asp:Literal>
-  </p>
+    <asp:Literal ID="LtlSujets" runat="server" OnPreRender="PreRender"></asp:Literal>
+  <br />
+  <asp:Panel ID="pnlSujet" runat="server" BorderStyle="Solid">
+    <asp:HyperLink ID="Titre" runat="server" NavigateUrl="~/PageDiscussion.aspx">Titre</asp:HyperLink>
+    &nbsp;CreationDate Créé par: Username<br /> &nbsp;Nb repliques: NbPosts Derniere modification: LastPost Par: LastPoster</asp:Panel>
 </asp:Content>
 
