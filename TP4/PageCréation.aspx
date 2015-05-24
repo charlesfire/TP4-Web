@@ -10,13 +10,13 @@
       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtbSujet" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
       &nbsp;<asp:TextBox ID="txtbSujet" runat="server" MaxLength="40" Width="650px"></asp:TextBox>
     </p>
-    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtbSujet" ErrorMessage="Votre sujet doit être d'au moins 5 caractères." ForeColor="Red" ValidationExpression="^[\s\S]{8,20}$"></asp:RegularExpressionValidator>
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtbSujet" ErrorMessage="Votre sujet doit être d'au moins 5 caractères." ForeColor="Red" ValidationExpression="^[\s\S]{5,40}$"></asp:RegularExpressionValidator>
     <p>
       Contenu:&nbsp;
       <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtbContenu" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
     </p>
     <p>
-      <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtbContenu" ErrorMessage="Votre contenu doit être d'au moins 5 caractères." ForeColor="Red"></asp:RegularExpressionValidator>
+      <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtbContenu" ErrorMessage="Votre contenu doit être d'au moins 5 caractères." ForeColor="Red" ValidationExpression="^[\s\S]{5,}$"></asp:RegularExpressionValidator>
     </p>
     <p style="margin-left: 40px">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
