@@ -45,7 +45,6 @@ public class Sujet
 
   public string BuildLitteral(int nbSujet)
   {
-    //string litteral = "<asp:Panel ID=\"pnlSujet" +nbSujet+ "\" runat=\"se <asp:HyperLink ID=\""+Title+"\" runat=\"server\" NavigateUrl=\"~/PageDiscussion.aspx\">"+Title+"</asp:HyperLink>&nbsp;"+CreationDate+" Créé par: "+Username+"<br /> &nbsp;Nb repliques: "+NbPosts+" Derniere modification: "+LastPost+" Par: "+LastPoster+"</asp:Panel>";
     string litteral = "  <div id=\"pnlSujet\" style=\"border-style:Solid;\"><a id=\""+Title+"\" href=\"PageDiscussion.aspx\">"+Title+"</a>&nbsp;"+CreationDate+" Créé par: "+Username+"<br /> &nbsp;Nb repliques: "+NbPosts+" Derniere modification: LastPost Par: "+LastPoster+"</div>";
     return litteral;
   }
