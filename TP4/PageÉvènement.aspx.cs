@@ -10,8 +10,6 @@ public partial class PageÉvènement : System.Web.UI.Page
   /// </summary>
   private SortedDictionary<string, int> planchersParJeu = new SortedDictionary<string, int>();
 
-  private User user = null;
-
   /// <summary>
   /// Fonction appelée lors du chargement/rechargement/postback de la page
   /// </summary>
@@ -19,10 +17,10 @@ public partial class PageÉvènement : System.Web.UI.Page
   /// <param name="e"></param>
   protected void Page_LoadComplete(object sender, EventArgs e)
   {
-    user = (User)Session["user"];
+    User user = (User)Session["user"];
     if (user == null)
     {
-      Response.Redirect("tp4.aspx", false);
+      Response.Redirect("tp4.aspx");
     }
 
     // Si le conteneur associatif des planchers/jeux est vide...
@@ -106,6 +104,8 @@ public partial class PageÉvènement : System.Web.UI.Page
   /// <param name="e"></param>
   protected void btnSuprimerSelection_Click(object sender, EventArgs e)
   {
+    User user = (User)Session["user"];
+
     // Tant qu'il reste un élément coché...
     while (cblInscriptions.SelectedItem != null)
     {
@@ -151,6 +151,8 @@ public partial class PageÉvènement : System.Web.UI.Page
   /// <param name="e"></param>
   protected void btnAjouter_Click(object sender, EventArgs e)
   {
+    User user = (User)Session["user"];
+
     // On vérifie que les entrés de l'utilisateur sont valides
     Page.Validate("validerAjoutInscription");
 
@@ -182,7 +184,7 @@ public partial class PageÉvènement : System.Web.UI.Page
   protected void btnAnnuler_Click(object sender, EventArgs e)
   {
     // On recharge la page pour effacer tout le reste
-    Response.Redirect((string)Session["lastPage"], false);
+    Response.Redirect((string)Session["lastPage"]);
   }
 
   /// <summary>
@@ -192,6 +194,8 @@ public partial class PageÉvènement : System.Web.UI.Page
   /// <param name="e"></param>
   protected void btnConfirmer_Click(object sender, EventArgs e)
   {
+    User user = (User)Session["user"];
+
     // On vérifie que les entrés de l'utilisateur sont valides
     Page.Validate("validerDocument");
 
@@ -204,7 +208,7 @@ public partial class PageÉvènement : System.Web.UI.Page
       //ToDo : save in database
 
       // On charge la page de résumé
-      Response.Redirect("Resume.aspx", false);
+      Response.Redirect("Resume.aspx");
     }
   }
 
@@ -215,6 +219,8 @@ public partial class PageÉvènement : System.Web.UI.Page
   /// <param name="args"></param>
   protected void cvNbMinimumMatch_ServerValidate(object source, ServerValidateEventArgs args)
   {
+    User user = (User)Session["user"];
+
     // Si l'utilisateur n'as pas sourcrit à au moins un match, il ne peut pas continuer
     args.IsValid = user.inscriptions.Count >= 1;
   }
@@ -229,6 +235,8 @@ public partial class PageÉvènement : System.Web.UI.Page
   {
     // On considère à la base qu'il ne s'est pas inscrit deux fois à la même heure le même jour
     args.IsValid = true;
+
+    User user = (User)Session["user"];
 
     // On récupère la date et l'heure à laquelle l'utilisateur souhaite ajouter un match
     DateTime heure = new DateTime();
@@ -257,6 +265,8 @@ public partial class PageÉvènement : System.Web.UI.Page
   {
     // On considère à la base qu'il ne s'est pas inscrit à plus de 3 match par plancher par évènement
     args.IsValid = true;
+
+    User user = (User)Session["user"];
 
     // On récupère le numéro du plancher sur lequel il souhaite s'inscrire
     int numeroPlancher = int.Parse(ddlPlancher.SelectedValue);

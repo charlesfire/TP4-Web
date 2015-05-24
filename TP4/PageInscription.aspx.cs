@@ -10,7 +10,8 @@ public partial class PageInscription : System.Web.UI.Page
 {
   protected void Page_Load(object sender, EventArgs e)
   {
-
+    if (Session["user"] != null)
+      Response.Redirect("tp4.aspx");
   }
 
     protected void btnConfirmer_Click(object sender, EventArgs e)
