@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 public class User
 {
-  private List<Inscription> inscriptions = null;
+  public List<Inscription> inscriptions = null;
 
   public string Name
   {

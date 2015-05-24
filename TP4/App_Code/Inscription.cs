@@ -8,27 +8,15 @@ using System.Web;
 /// </summary>
 public class Inscription
 {
-	private string evenement = "";
 	private string jeu = "";
 	private int plancher = -1;
-	private DateTime date = new DateTime(1, 1, 1);
+	private DateTime heure = new DateTime(1, 1, 1);
 
 	public Inscription()
 	{
-		evenement = "";
 		jeu = "";
 		plancher = -1;
-		date = new DateTime(1, 1, 1);
-	}
-
-	public string GetEvenement()
-	{
-		return evenement;
-	}
-
-	public void SetEvenement(string evenement)
-	{
-		this.evenement = evenement;
+		heure = new DateTime(1, 1, 1);
 	}
 
 	public string GetJeu()
@@ -51,18 +39,18 @@ public class Inscription
 		this.plancher = plancher;
 	}
 
-	public DateTime GetDate()
+	public DateTime GetHeure()
 	{
-		return date;
+		return heure;
 	}
 
-	public void SetDate(DateTime date)
+	public void SetHeure(DateTime heure)
 	{
-		this.date = date;
+		this.heure = heure;
 	}
 
 	public override string ToString()
 	{
-		return "Événement : " + evenement + " | Jeu : " + jeu + " | Plancher #" + plancher + " | Date : " + date.ToLongDateString() + " | Heure : " + date.ToShortTimeString();
+		return "Jeu : " + jeu + " | Plancher #" + plancher + " | Heure : " + heure.ToShortTimeString();
 	}
 }
