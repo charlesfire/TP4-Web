@@ -32,7 +32,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void btnSeConnecter_Click(object sender, EventArgs e)
     {
       OleDbConnection myConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath(@"Forum DB/Forum.accdb"));
-      OleDbCommand userConnectCommand = new OleDbCommand("SELECT [Password], IsBanned, PostCount, IsAdmin, Email, Avatar, Adresse FROM Users WHERE Username = '" + txtbPseudo.Text + "';", myConnection);
+      OleDbCommand userConnectCommand = new OleDbCommand("SELECT [Password], IsBanned, PostCount, IsAdmin, Email, Avatar, Adresse,Signature FROM Users WHERE Username = '" + txtbPseudo.Text + "';", myConnection);
       OleDbCommand eventInscriptionCommand = new OleDbCommand("SELECT Event, EventDate, Game, Floor, EventHour FROM Inscriptions WHERE '" + txtbPseudo.Text + "';", myConnection);
 
       try
@@ -55,7 +55,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             user.Email = (string)myReader["Email"];
             user.Avatar = (string)myReader["Avatar"];
             user.Adresse = (string)myReader["Adresse"];
-
+            user.Signature = (string)myReader["Signature"];
             List<Inscription> inscriptions = new List<Inscription>();
             myReader = eventInscriptionCommand.ExecuteReader();
             while (myReader.Read())

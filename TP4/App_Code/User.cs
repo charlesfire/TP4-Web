@@ -15,7 +15,11 @@ public class User
     get;
     set;
   }
-
+  public string Signature
+  {
+    get;
+    set;
+  }
   public string Password
   {
     get;

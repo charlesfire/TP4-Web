@@ -37,7 +37,7 @@
   <br />
   <br />Choisissez votre signature (optionnel):<br />
   <br />
-  <asp:TextBox ID="txtBSignature" runat="server" Height="90px" Rows="3" TextMode="MultiLine" Width="477px" MaxLength="100"></asp:TextBox>
+  <asp:TextBox ID="txtBSignature" runat="server" Height="90px" Rows="3" TextMode="MultiLine" Width="400px" MaxLength="100"></asp:TextBox>
   <br />
   <br />
   <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" OnClick="btnConfirmer_Click" />

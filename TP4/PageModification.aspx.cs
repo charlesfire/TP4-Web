@@ -22,18 +22,29 @@ public partial class PageModification : System.Web.UI.Page
     if (user != null)
     {
       if (txtBPassword.Text != "")
+      {
         ModifierBD("UPDATE users SET Password = '" + txtBPassword.Text + "WHERE Username = '" + user.Name + "'");
+        user.Password = txtBPassword.Text;
+      }
       int MaxWidth = 200;
       int MaxHeight = 200;
       if (txtBSignature.Text != "")
+      {
         ModifierBD("UPDATE users SET Signature = '" + txtBSignature.Text + "' WHERE Username = '" + user.Name + "';");
+        user.Signature = txtBSignature.Text;
+      }
       if (txtBAdresse.Text != "")
+      {
         ModifierBD("UPDATE users SET Adresse = '" + txtBAdresse.Text + "' WHERE Username = '" + user.Name + "';");
+        user.Adresse = txtBAdresse.Text;
+      }
       if (txtBEmail.Text != "")
+      {
         ModifierBD("UPDATE users SET Email = '" + txtBEmail.Text + "' WHERE Username = '" + user.Name + "';");
-      if (!fileUAvatar.HasFile)
-      ModifierBD("UPDATE users SET Avatar = 'default.png' WHERE Username = '" + user.Name + "';");
-      else
+        user.Email = txtBEmail.Text;
+      }
+
+      if (fileUAvatar.HasFile)
       {
         try
         {
@@ -51,6 +62,8 @@ public partial class PageModification : System.Web.UI.Page
               fileUAvatar.SaveAs(path);
               ModifierBD("UPDATE users SET Avatar = '" + filename + "' WHERE Username = '" + user.Name + "';");
               Session["texteConfirmation"] = "Votre modification a été effectuée avec succès.";
+              user.Avatar = filename;
+              Session["user"] = user;
               Server.Transfer("PageConfirmation.aspx");
             }
             else
@@ -67,6 +80,10 @@ public partial class PageModification : System.Web.UI.Page
         {
           lblAvatar2.Text = "Le fichier ne peut être chargé";
         }
+      }
+      else
+      {
+        Server.Transfer("PageConfirmation.aspx");
       }
     }
   }
