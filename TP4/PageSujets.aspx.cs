@@ -50,7 +50,7 @@ public partial class PageSujets : System.Web.UI.Page
     }
     protected void PreRender(object sender, EventArgs e)
     {
-      //NOTE: Les lignes suivantes sont des tests et peuvent être supprimés.
+      //NOTE: Les lignes suivantes sont des tests et peuvent être supprimés. À la place, on pourrait faire un for qui cycle au travers de tout les éléments du tableau post dans la base de donnée (trié en ordre décroissant de date de derniere modification).
       Sujet sujet = new Sujet();
       sujet.LastPost = DateTime.Now;
       sujet.LastPoster = "Jojmaster";
