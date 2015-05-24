@@ -15,10 +15,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void Page_PreRender()
     {
-      if (Session["user"] != null)
+      User user = (User)Session["user"];
+      if (user != null)
       {
         pnlConnected.Visible = true;
         pnlConnexion.Visible = false;
+        imgbtnProfil.ImageUrl = "Images/" + user.Avatar;
       }
       else
       {

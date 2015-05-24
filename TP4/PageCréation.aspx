@@ -29,7 +29,7 @@
   </asp:Panel>
   <asp:Panel ID="pnlNestPasConnecte" runat="server" Visible="False">
     <br />
-    Vous devez vous connecter pour utiliser cette page.</asp:Panel>
+    Vous devez vous connecter pour utiliser cette page.<br /> </asp:Panel>
 
   </asp:Content>
 
