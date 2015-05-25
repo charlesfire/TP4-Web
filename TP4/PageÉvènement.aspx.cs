@@ -109,6 +109,10 @@ public partial class PageÉvènement : System.Web.UI.Page
     // Tant qu'il reste un élément coché...
     while (cblInscriptions.SelectedItem != null)
     {
+      DataBaseHelper.ModifierBD("DELETE FROM Inscriptions WHERE Username = '" + user.Name + "' AND Game = '" + user.inscriptions[cblInscriptions.SelectedIndex].GetJeu() +
+                                "' AND Floor = " + user.inscriptions[cblInscriptions.SelectedIndex].GetPlancher() + " AND EventHour = #" +
+                                user.inscriptions[cblInscriptions.SelectedIndex].GetHeure().ToString() + "#;", Server);
+
       // On le suprime
       user.inscriptions.RemoveAt(cblInscriptions.SelectedIndex);
 
@@ -164,12 +168,16 @@ public partial class PageÉvènement : System.Web.UI.Page
 
       nouvelleInscription.SetJeu(ddlJeu.SelectedValue);
       nouvelleInscription.SetPlancher(int.Parse(ddlPlancher.SelectedValue));
+      nouvelleInscription.SetHeure(DateTime.Parse(ddlHeure.SelectedValue));
 
       // On ajoute visuellement à la page l'inscription
       cblInscriptions.Items.Add(nouvelleInscription.ToString());
 
       // On ajout l'inscription à la liste des inscriptions
       user.inscriptions.Add(nouvelleInscription);
+      DataBaseHelper.ModifierBD("INSERT INTO Inscriptions (Username, Game, Floor, EventHour) VALUES('" + user.Name + "', '" +
+                                  nouvelleInscription.GetJeu() + "', " + nouvelleInscription.GetPlancher() + ",'" +
+                                  nouvelleInscription.GetHeure().ToString() + "');", Server);
 
       // On rend les inscriptions visibles
       pnlEditionInscription.Visible = true;
@@ -205,10 +213,10 @@ public partial class PageÉvènement : System.Web.UI.Page
       // On sauvegarde les informations pertinentes dans des variables de session
       Session["user"] = user;
 
-      //ToDo : save in database
+      //todo
 
       // On charge la page de résumé
-      Response.Redirect("Resume.aspx");
+      //Response.Redirect("Resume.aspx");
     }
   }
 

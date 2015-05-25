@@ -56,13 +56,16 @@ public partial class MasterPage : System.Web.UI.MasterPage
             user.Avatar = (string)myReader["Avatar"];
             user.Adresse = (string)myReader["Adresse"];
             user.Signature = (string)myReader["Signature"];
-            List<Inscription> inscriptions = new List<Inscription>();
             myReader = eventInscriptionCommand.ExecuteReader();
             while (myReader.Read())
             {
               Inscription inscription = new Inscription();
 
-              inscriptions.Add(inscription);
+              inscription.SetHeure((DateTime)myReader["EventHour"]);
+              inscription.SetJeu((string)myReader["Game"]);
+              inscription.SetPlancher((byte)myReader["Floor"]);
+
+              user.inscriptions.Add(inscription);
             }
 
             Session["user"] = user;
