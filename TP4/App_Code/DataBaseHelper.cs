@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.OleDb;
-using System.Linq;
+﻿using System.Data.OleDb;
 using System.Web;
 
 /// <summary>
@@ -9,9 +6,9 @@ using System.Web;
 /// </summary>
 public static class DataBaseHelper
 {
-  public static void ModifierBD(string requeteSQL)
+  public static void ModifierBD(string requeteSQL, HttpServerUtility server)
   {
-    OleDbConnection maConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath(@"Forum DB/Forum.accdb"));
+    OleDbConnection maConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + server.MapPath(@"Forum DB/Forum.accdb"));
     OleDbCommand maCommande = new OleDbCommand(requeteSQL, maConnection);
     bool connectionReussie = false;
     try
@@ -21,7 +18,7 @@ public static class DataBaseHelper
     }
     catch
     {
-      lblAvatar.Text = "Erreur de connection, veuillez réessayer plus tard";
+      
     }
 
     if (connectionReussie)
@@ -32,7 +29,7 @@ public static class DataBaseHelper
       }
       catch
       {
-
+        if (true) { }
       }
       finally
       {
