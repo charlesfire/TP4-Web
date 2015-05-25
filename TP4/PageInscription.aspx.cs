@@ -16,11 +16,11 @@ public partial class PageInscription : System.Web.UI.Page
 
     protected void btnConfirmer_Click(object sender, EventArgs e)
     {
-      DataBaseHelper.ModifierBD("INSERT INTO Users (Username, [Password], PostCount, Email, Adresse) VALUES ('" + txtBUserName.Text + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');");
+      DataBaseHelper.ModifierBD("INSERT INTO Users (Username, [Password], PostCount, Email, Adresse) VALUES ('" + txtBUserName.Text + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');", Server);
       int MaxWidth = 200;
       int MaxHeight = 200;
-      DataBaseHelper.ModifierBD("UPDATE users SET Avatar = 'default.png' WHERE Username = '" + txtBUserName.Text + "';");
-      DataBaseHelper.ModifierBD("UPDATE users SET Signature = '" + txtBoxSignature.Text + "' WHERE Username = '" + txtBUserName.Text + "';");
+      DataBaseHelper.ModifierBD("UPDATE users SET Avatar = 'default.png' WHERE Username = '" + txtBUserName.Text + "';", Server);
+      DataBaseHelper.ModifierBD("UPDATE users SET Signature = '" + txtBoxSignature.Text + "' WHERE Username = '" + txtBUserName.Text + "';", Server);
       if (fileUAvatar.HasFile)
       {
         try
@@ -37,7 +37,7 @@ public partial class PageInscription : System.Web.UI.Page
                 string path = Server.MapPath("~\\Images\\") + filename;
                 fileUAvatar.SaveAs(path);
                 Session["imageURL"] = "~/Images/" + filename;
-                DataBaseHelper.ModifierBD("UPDATE users SET Avatar = '" + filename + "' WHERE Username = '" + txtBUserName.Text + "';");
+                DataBaseHelper.ModifierBD("UPDATE users SET Avatar = '" + filename + "' WHERE Username = '" + txtBUserName.Text + "';", Server);
               }
               else
               {
