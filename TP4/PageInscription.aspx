@@ -15,8 +15,9 @@
 &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtBPassword" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
       <asp:TextBox ID="txtBPassword" runat="server" TextMode="Password" Width="311px" MaxLength="20"></asp:TextBox>
       <asp:RegularExpressionValidator ID="RegExValLblPassword" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="^[\s\S]{8,20}$">Votre mot de passe doit avoir entre 8 et 20 caractères</asp:RegularExpressionValidator>
-      <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="[a-z]+">Votre mot de passe doit avoir au moins une lettre minuscule</asp:RegularExpressionValidator>
-      <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="[A-Z]+">Votre mot de passe doit avoir au moins une lettre majuscule</asp:RegularExpressionValidator>
+  <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="^(?=.*[a-z]).+$">Votre mot de passe doit avoir au moins une lettre minuscule</asp:RegularExpressionValidator>
+  <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="^(?=.*[A-Z]).+$">Votre mot de passe doit avoir au moins une lettre majuscule</asp:RegularExpressionValidator>
+  <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="^(?=.*\d).+$">Votre mot de passe doit avoir au moins un chiffre</asp:RegularExpressionValidator>
       <br />
       <br />
       <asp:Label ID="lblConfPassword" runat="server" Text="Confirmez votre mot de passe:"></asp:Label>
