@@ -78,4 +78,12 @@ public partial class PageDiscussion : System.Web.UI.Page
     {
       Session["sujet"] = sujet;
     }
+    protected void btnSoumettre_Click(object sender, EventArgs e)
+    {
+      User user = (User)Session["user"];
+      DataBaseHelper.ModifierBD("INSERT INTO Posts (TopicNumber,UserName,Body,DatePosted) VALUES (" + sujet.PostNumber + ",'" + user.Name + "','" + txtbMessage.Text + "',#" + DateTime.Now + "#);",Server);
+      user.PostCount++;
+      DataBaseHelper.ModifierBD("UPDATE Users SET PostCount="+user.PostCount+";",Server);
+      Session["user"] = user;
+    }
 }

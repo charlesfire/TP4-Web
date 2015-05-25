@@ -6,11 +6,15 @@
   <asp:Label ID="lblTitre" runat="server" OnPreRender="lblTitre_PreRender" Text="Label" OnUnload="lblTitre_Unload"></asp:Label>
   <br />
   <br />
+  <asp:Table ID="tblContent" runat="server">
+  </asp:Table>
+  <br />
+  <br />
   <asp:Panel ID="pnlMessage" runat="server" OnPreRender="pnlMessage_PreRender">
     Message:<br />
     <asp:TextBox ID="txtbMessage" runat="server" Height="199px" TextMode="MultiLine" Width="485px"></asp:TextBox>
     <br />
-    <asp:Button ID="btnSoumettre" runat="server" Text="Soumettre" />
+    <asp:Button ID="btnSoumettre" runat="server" Text="Soumettre" OnClick="btnSoumettre_Click" />
   </asp:Panel>
 </asp:Content>
 
