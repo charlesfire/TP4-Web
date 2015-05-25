@@ -50,7 +50,7 @@ public class Sujet
 
   public string BuildLitteral()
   {
-    string litteral = "  <div id=\"pnlSujet\" style=\"border-style:Solid;\"><a id=\""+Title+"\" href=\"PageDiscussion.aspx\">"+Title+"</a>&nbsp;"+CreationDate+" Créé par: "+Username+"<br /> &nbsp;Nb repliques: "+NbPosts+" Derniere modification:"+LastPost+" Par: "+LastPoster+"</div>";
+    string litteral = "  <div id=\"pnlSujet\" style=\"border-style:Solid;\"><a id=\""+Title+"\" href=\"PageDiscussion.aspx?topicNumber=" + PostNumber+"\">"+Title+"</a>&nbsp;"+CreationDate+" Créé par: "+Username+"<br /> &nbsp;Nb repliques: "+NbPosts+" Derniere modification:"+LastPost+" Par: "+LastPoster+"</div>";
     return litteral;
   }
 }
