@@ -16,11 +16,11 @@ public partial class PageInscription : System.Web.UI.Page
 
     protected void btnConfirmer_Click(object sender, EventArgs e)
     {
-      ModifierBD("INSERT INTO Users (Username, [Password], PostCount, Email, Adresse) VALUES ('" + txtBUserName.Text + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');");
+      DataBaseHelper.ModifierBD("INSERT INTO Users (Username, [Password], PostCount, Email, Adresse) VALUES ('" + txtBUserName.Text + "','" + txtBPassword.Text + "'," + 0 + ",'" + txtBEmail.Text + "','" + txtBAdresse.Text + "');");
       int MaxWidth = 200;
       int MaxHeight = 200;
-      ModifierBD("UPDATE users SET Avatar = 'default.png' WHERE Username = '" + txtBUserName.Text + "';");
-      ModifierBD("UPDATE users SET Signature = '" + txtBoxSignature.Text + "' WHERE Username = '" + txtBUserName.Text + "';");
+      DataBaseHelper.ModifierBD("UPDATE users SET Avatar = 'default.png' WHERE Username = '" + txtBUserName.Text + "';");
+      DataBaseHelper.ModifierBD("UPDATE users SET Signature = '" + txtBoxSignature.Text + "' WHERE Username = '" + txtBUserName.Text + "';");
       if (fileUAvatar.HasFile)
       {
         try
@@ -37,7 +37,7 @@ public partial class PageInscription : System.Web.UI.Page
                 string path = Server.MapPath("~\\Images\\") + filename;
                 fileUAvatar.SaveAs(path);
                 Session["imageURL"] = "~/Images/" + filename;
-                ModifierBD("UPDATE users SET Avatar = '" +filename+"' WHERE Username = '" + txtBUserName.Text+"';");
+                DataBaseHelper.ModifierBD("UPDATE users SET Avatar = '" + filename + "' WHERE Username = '" + txtBUserName.Text + "';");
               }
               else
               {
@@ -58,39 +58,7 @@ public partial class PageInscription : System.Web.UI.Page
       Server.Transfer("PageConfirmation.aspx");
     }
 
-    private void ModifierBD(string requeteSQL)
-    {
-      OleDbConnection maConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath(@"Forum DB/Forum.accdb"));
-      OleDbCommand maCommande = new OleDbCommand(requeteSQL, maConnection);
-      bool connectionReussie = false;
-      try
-      {
-        maConnection.Open();
-        connectionReussie = true;
-      }
-      catch
-      {
-        lblAvatar.Text = "Erreur de connection, veuillez réessayer plus tard";
-      }
-
-      if (connectionReussie)
-      {
-        try
-        {
-          maCommande.ExecuteReader();
-        }
-        catch
-        {
-          
-        }
-        finally
-        {
-          maConnection.Close();
-        }
-      }
-    }
-
-    public bool TesterTailleImage(int MaxWidth, int MaxHeight)
+    private bool TesterTailleImage(int MaxWidth, int MaxHeight)
     {
       System.Drawing.Image myImage;
 
