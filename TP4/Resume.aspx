@@ -14,10 +14,8 @@
 		<br />
 		<asp:Table ID="tbInscriptions" runat="server" BorderColor="Gray" BorderStyle="Solid" BorderWidth="1px" GridLines="Both" HorizontalAlign="Center">
 			<asp:TableRow runat="server" BackColor="Gray" Font-Bold="True" ForeColor="White">
-				<asp:TableCell runat="server">Événement</asp:TableCell>
 				<asp:TableCell runat="server">Jeu</asp:TableCell>
 				<asp:TableCell runat="server">Plancher</asp:TableCell>
-				<asp:TableCell runat="server">Date</asp:TableCell>
 				<asp:TableCell runat="server">Heure</asp:TableCell>
 			</asp:TableRow>
 		</asp:Table>
