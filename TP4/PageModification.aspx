@@ -8,6 +8,8 @@
 <asp:Label ID="lblCurrentPassword" runat="server" OnPreRender="PreRender"></asp:Label>
 <br />
   <asp:RegularExpressionValidator ID="RegExValLblPassword" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="^[\s\S]{8,20}$">Votre mot de passe doit avoir au moins 8 caractères</asp:RegularExpressionValidator>
+  <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="[a-z]+">Votre mot de passe doit avoir au moins une lettre minuscule</asp:RegularExpressionValidator>
+  <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtBPassword" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="[A-Z]+">Votre mot de passe doit avoir au moins une lettre majuscule</asp:RegularExpressionValidator>
   <br />
   <br />
   <asp:Label ID="lblConfPassword" runat="server" Text="Confirmez votre mot de passe:"></asp:Label>
@@ -38,8 +40,6 @@
   <br />Choisissez votre signature (optionnel):<br />
   <br />
   <asp:TextBox ID="txtBSignature" runat="server" Height="90px" Rows="3" TextMode="MultiLine" Width="400px" MaxLength="100"></asp:TextBox>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <asp:TextBox ID="txtbSignaturePreview" runat="server" Enabled="False" Height="88px" TextMode="MultiLine" Width="328px"></asp:TextBox>
   <br />
   <br />
   <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" OnClick="btnConfirmer_Click" />
