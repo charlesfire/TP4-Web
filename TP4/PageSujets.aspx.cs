@@ -43,6 +43,7 @@ public partial class PageSujets : System.Web.UI.Page
             sujet.NbPosts = (short)monDataReader[3];
             sujet.LastPoster = monDataReader[4].ToString();
             sujet.LastPost = (DateTime)monDataReader[5];
+            sujet.PostNumber = (int)monDataReader[6];
             LtlSujets.Text += sujet.BuildLitteral();
           }
         }
@@ -58,7 +59,7 @@ public partial class PageSujets : System.Web.UI.Page
     }
     protected void PreRender(object sender, EventArgs e)
     {
-      ConstruireLiteralSujets("SELECT Title, StartedBy, DatePosted, NbPosts, LastPoster, LastPostTime FROM Topics ORDER BY LastPostTime DESC;");
+      ConstruireLiteralSujets("SELECT Title, StartedBy, DatePosted, NbPosts, LastPoster, LastPostTime,TopicNumber FROM Topics ORDER BY LastPostTime DESC;");
       User user = (User)Session["user"];
       if (user != null)
       {
