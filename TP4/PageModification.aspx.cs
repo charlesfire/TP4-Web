@@ -159,6 +159,7 @@ public partial class PageModification : System.Web.UI.Page
       lblCurrentPassword.Text = hiddenPassword;
       lblCurrentAdress.Text = user.Adresse;
       lblCurrentEmail.Text = user.Email;
+      txtbSignaturePreview.Text = user.Signature;
     }
   }
 }

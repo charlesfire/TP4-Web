@@ -38,6 +38,8 @@
   <br />Choisissez votre signature (optionnel):<br />
   <br />
   <asp:TextBox ID="txtBSignature" runat="server" Height="90px" Rows="3" TextMode="MultiLine" Width="400px" MaxLength="100"></asp:TextBox>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <asp:TextBox ID="txtbSignaturePreview" runat="server" Enabled="False" Height="88px" TextMode="MultiLine" Width="328px"></asp:TextBox>
   <br />
   <br />
   <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" OnClick="btnConfirmer_Click" />
