@@ -29,7 +29,7 @@ public static class DataBaseHelper
       }
       catch
       {
-        
+        if (true) { }
       }
       finally
       {

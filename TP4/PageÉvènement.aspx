@@ -30,7 +30,7 @@
   <br />
   <asp:CustomValidator ID="cvNbMinimumMatch" runat="server" ClientValidationFunction="validerNbMinInscription" Display="None" ErrorMessage="Vous devez vous inscrire à au moins un match." OnServerValidate="cvNbMinimumMatch_ServerValidate" ValidationGroup="validerDocument"></asp:CustomValidator>
   <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" OnClick="btnConfirmer_Click" CssClass="button" ValidationGroup="validerDocument" />
-  <asp:Button ID="btnAnnuler" runat="server" Text="Annuler" OnClick="btnAnnuler_Click" CssClass="button" EnableTheming="True" />
+  <asp:Button ID="btnAnnuler" runat="server" Text="Retour à l'acceuil" OnClick="btnAnnuler_Click" CssClass="button" EnableTheming="True" />
   <br />
   <br />
   <asp:Label ID="lblAssocies" runat="server" CssClass="subTitles" Text="Nos associés"></asp:Label>

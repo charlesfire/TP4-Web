@@ -170,14 +170,15 @@ public partial class PageÉvènement : System.Web.UI.Page
       nouvelleInscription.SetPlancher(int.Parse(ddlPlancher.SelectedValue));
       nouvelleInscription.SetHeure(DateTime.Parse(ddlHeure.SelectedValue));
 
+      DataBaseHelper.ModifierBD("INSERT INTO Inscriptions (Username, Game, Floor, EventHour) VALUES('" + user.Name + "', '" +
+                                  nouvelleInscription.GetJeu() + "', " + nouvelleInscription.GetPlancher() + ",'" +
+                                  nouvelleInscription.GetHeure().ToString() + "');", Server);
+
       // On ajoute visuellement à la page l'inscription
       cblInscriptions.Items.Add(nouvelleInscription.ToString());
 
       // On ajout l'inscription à la liste des inscriptions
       user.inscriptions.Add(nouvelleInscription);
-      DataBaseHelper.ModifierBD("INSERT INTO Inscriptions (Username, Game, Floor, EventHour) VALUES('" + user.Name + "', '" +
-                                  nouvelleInscription.GetJeu() + "', " + nouvelleInscription.GetPlancher() + ",'" +
-                                  nouvelleInscription.GetHeure().ToString() + "');", Server);
 
       // On rend les inscriptions visibles
       pnlEditionInscription.Visible = true;
@@ -192,7 +193,7 @@ public partial class PageÉvènement : System.Web.UI.Page
   protected void btnAnnuler_Click(object sender, EventArgs e)
   {
     // On recharge la page pour effacer tout le reste
-    Response.Redirect((string)Session["lastPage"]);
+    Response.Redirect("tp4.aspx");
   }
 
   /// <summary>
@@ -210,11 +211,6 @@ public partial class PageÉvènement : System.Web.UI.Page
     // Si les entrés sont valide...
     if (Page.IsValid)
     {
-      // On sauvegarde les informations pertinentes dans des variables de session
-      Session["user"] = user;
-
-      //todo
-
       // On charge la page de résumé
       //Response.Redirect("Resume.aspx");
     }
