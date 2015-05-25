@@ -3,6 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Wrapper" Runat="Server">
-  <asp:Label ID="lblTitre" runat="server" OnPreRender="lblTitre_PreRender" Text="Label"></asp:Label>
+  <asp:Label ID="lblTitre" runat="server" OnPreRender="lblTitre_PreRender" Text="Label" OnUnload="lblTitre_Unload"></asp:Label>
+  <br />
+  <br />
+  <asp:Panel ID="pnlMessage" runat="server" OnPreRender="pnlMessage_PreRender">
+    Message:<br />
+    <asp:TextBox ID="txtbMessage" runat="server" Height="199px" TextMode="MultiLine" Width="485px"></asp:TextBox>
+    <br />
+    <asp:Button ID="btnSoumettre" runat="server" Text="Soumettre" />
+  </asp:Panel>
 </asp:Content>
 

@@ -58,5 +58,24 @@ public partial class PageDiscussion : System.Web.UI.Page
     {
       ObtenirSujet("SELECT Title, StartedBy, DatePosted, NbPosts, LastPoster, LastPostTime, TopicNumber FROM Topics WHERE TopicNumber="+Request.QueryString["topicNumber"]);
       lblTitre.Text = sujet.Title;
+      if ((Sujet)Session["sujet"] != null)
+      {
+        lblTitre.Text = sujet.Title;
+      }
+    }
+    protected void pnlMessage_PreRender(object sender, EventArgs e)
+    {
+      if ((User)Session["user"] == null)
+      {
+        pnlMessage.Visible = false;
+      }
+      else
+      {
+        pnlMessage.Visible = true;
+      }
+    }
+    protected void lblTitre_Unload(object sender, EventArgs e)
+    {
+      Session["sujet"] = sujet;
     }
 }

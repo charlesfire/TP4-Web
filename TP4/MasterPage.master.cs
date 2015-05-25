@@ -87,7 +87,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         User userConnectedTest = (User)Session["user"];
         if (userConnectedTest != null)
         {
-          Response.Redirect(HttpContext.Current.Request.Url.AbsolutePath);
+          Server.Transfer(HttpContext.Current.Request.Url.AbsolutePath);
         }
       }
     }
@@ -95,7 +95,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void btnDeconnexion_Click(object sender, EventArgs e)
     {
       Session["user"] = null;
-      Response.Redirect(HttpContext.Current.Request.Url.AbsolutePath);
+      Server.Transfer(HttpContext.Current.Request.Url.AbsolutePath);
     }
 
     protected void btnInscription_Click(object sender, EventArgs e)
