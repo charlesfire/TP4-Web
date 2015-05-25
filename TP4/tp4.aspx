@@ -2,6 +2,9 @@
 
 <asp:Content ContentPlaceHolderId="Wrapper" runat="server">
     <div>
+      Bienvenue dans le site de GameOn!<br />
+      <br />
+      Le but du site est de permettre aux membres de la ligue de discuter ensemble dans le forum ou de s&#39;inscrire à un de nos événements<br />
       <br />
       <br />
       <br />

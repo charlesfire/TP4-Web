@@ -16,6 +16,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void Page_PreRender()
     {
       User user = (User)Session["user"];
+      //Il faut vérifier si l'utilisateur existe pour décider quoi afficher.
       if (user != null)
       {
         pnlConnected.Visible = true;
@@ -28,7 +29,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
         pnlConnexion.Visible = true;
       }
     }
-
+  /// <summary>
+  /// Cette fonction permet à l'utilisateur d'essayer de se connecter.
+  /// </summary>
     protected void btnSeConnecter_Click(object sender, EventArgs e)
     {
       OleDbConnection myConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath(@"Forum DB/Forum.accdb"));
@@ -39,6 +42,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
       {
         myConnection.Open();
         OleDbDataReader myReader = userConnectCommand.ExecuteReader();
+        //On vérifie si la combinaison de mot de passe et de nom d'utilisateur existe.
         if (myReader.Read() && (string)myReader["Password"] == txtbPassword.Text)
         {
           if ((bool)myReader["IsBanned"])
@@ -72,7 +76,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
             imgbtnProfil.ImageUrl = "Images/" + user.Avatar;
             pnlConnexionReussie.Visible = true;
-            
           }
         }
         else
@@ -90,6 +93,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         User userConnectedTest = (User)Session["user"];
         if (userConnectedTest != null)
         {
+          //On fait un postback pour "Raffraichir" la page (permet de cacher les controles qui doivent être cachés)
           Server.Transfer(HttpContext.Current.Request.Url.AbsolutePath);
         }
       }
@@ -98,15 +102,18 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void btnDeconnexion_Click(object sender, EventArgs e)
     {
       Session["user"] = null;
+      //On fait un postback pour "Raffraichir" la page (permet de cacher les controles qui doivent être cachés)
       Server.Transfer(HttpContext.Current.Request.Url.AbsolutePath);
     }
 
     protected void btnInscription_Click(object sender, EventArgs e)
     {
+      //On garde la dernière page visitée en mémoire
       Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
     }
     protected void btnModifier_Click(object sender, EventArgs e)
     {
+      //On garde la dernière page visitée en mémoire
       Session["lastPage"] = HttpContext.Current.Request.Url.AbsolutePath;
       Server.Transfer("PageModification.aspx");
     }

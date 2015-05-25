@@ -20,7 +20,6 @@
             <asp:MenuItem Text="Acceuil" Value="Acceuil" NavigateUrl="~/tp4.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Évènement" Value="Évènement" NavigateUrl="~/PageÉvènement.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Forum" Value="Forum" NavigateUrl="~/PageSujets.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Nous joindre" Value="Nous joindre" NavigateUrl="~/MasterPage.master"></asp:MenuItem>
           </Items>
         </asp:Menu>
         <asp:Panel ID="pnlConnexion" runat="server" ClientIDMode="Static">

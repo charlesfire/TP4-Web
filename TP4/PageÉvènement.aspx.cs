@@ -211,7 +211,8 @@ public partial class PageÉvènement : System.Web.UI.Page
     // Si les entrés sont valide...
     if (Page.IsValid)
     {
-      Response.Redirect("Resume.aspx");
+      // On charge la page de résumé
+      //Response.Redirect("Resume.aspx");
     }
   }
 
