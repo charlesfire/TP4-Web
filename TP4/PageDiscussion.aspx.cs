@@ -56,11 +56,14 @@ public partial class PageDiscussion : System.Web.UI.Page
     }
     protected void lblTitre_PreRender(object sender, EventArgs e)
     {
-      ObtenirSujet("SELECT Title, StartedBy, DatePosted, NbPosts, LastPoster, LastPostTime, TopicNumber FROM Topics WHERE TopicNumber="+Request.QueryString["topicNumber"]);
       lblTitre.Text = sujet.Title;
       if ((Sujet)Session["sujet"] != null)
       {
         lblTitre.Text = sujet.Title;
+      }
+      else
+      {
+        ObtenirSujet("SELECT Title, StartedBy, DatePosted, NbPosts, LastPoster, LastPostTime, TopicNumber FROM Topics WHERE TopicNumber=" + Request.QueryString["topicNumber"]);
       }
     }
     protected void pnlMessage_PreRender(object sender, EventArgs e)
@@ -81,6 +84,7 @@ public partial class PageDiscussion : System.Web.UI.Page
     protected void btnSoumettre_Click(object sender, EventArgs e)
     {
       User user = (User)Session["user"];
+      sujet = (Sujet)Session["sujet"];
       DataBaseHelper.ModifierBD("INSERT INTO Posts (TopicNumber,UserName,Body,DatePosted) VALUES (" + sujet.PostNumber + ",'" + user.Name + "','" + txtbMessage.Text + "',#" + DateTime.Now + "#);",Server);
       user.PostCount++;
       DataBaseHelper.ModifierBD("UPDATE Users SET PostCount="+user.PostCount+";",Server);

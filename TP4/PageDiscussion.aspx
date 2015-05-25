@@ -9,7 +9,6 @@
   <asp:Table ID="tblContent" runat="server">
   </asp:Table>
   <br />
-  <br />
   <asp:Panel ID="pnlMessage" runat="server" OnPreRender="pnlMessage_PreRender">
     Message:<br />
     <asp:TextBox ID="txtbMessage" runat="server" Height="199px" TextMode="MultiLine" Width="485px"></asp:TextBox>
